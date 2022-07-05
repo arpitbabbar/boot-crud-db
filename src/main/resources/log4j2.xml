@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+	<Properties>
+		<Property name="basePath">D:\LOGS</Property>
+		<!-- <Property name="basePath">/logs/ivr/scp</Property> -->
+	</Properties>
+        <Appenders>
+		<RollingFile name="fileLogger"
+			fileName="${basePath}/logs.log"
+			filePattern="${basePath}/%d{yyyy-MM-dd_HH}_logs.gz">
+			<PatternLayout>
+				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="servicelogger"
+			fileName="${basePath}/Servicelogs.log"
+			filePattern="${basePath}/%d{yyyy-MM-dd_HH}_Servicelogs.gz">
+			<PatternLayout>
+				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+		</RollingFile>
+		<RollingFile name="controllogger"
+			fileName="${basePath}/Controllogs.log"
+			filePattern="${basePath}/%d{yyyy-MM-dd_HH}_Controllogs.gz">
+			<PatternLayout>
+				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+				</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+	<Logger name="com.springboot.games.service" additivity="false" level="info">
+		<appender-ref ref="servicelogger" />
+	</Logger>
+    <Logger name="com.springboot.games.controller" additivity="false" level="info" >
+    	<appender-ref ref="controllogger"/>
+    </Logger>  
+    
+    
+		<Root level="info" additivity="false">
+			<appender-ref ref="fileLogger" />
+	 
+		</Root> 
+	</Loggers>
+</Configuration>
