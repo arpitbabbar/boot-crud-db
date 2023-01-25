@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import  org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 //import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,9 @@ public class GamesController {
 	private GamesService gameService;
 	
 //	org.jboss.logging.Logger logger = LoggerFactory.logger(GamesController.class);
-	Logger log = LogManager.getLogger(GamesController.class);
+//	Logger log = LogManager.getLogger(GamesController.class);
+	
+	private static Logger log = LoggerFactory.getLogger(GamesController.class);
 	
 	@RequestMapping("/games")
 	public List<Games> getAllGames() {
