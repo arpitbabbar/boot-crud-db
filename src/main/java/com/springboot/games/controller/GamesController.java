@@ -37,7 +37,7 @@ public class GamesController {
 		return gameService.getAllGames();
 	}
 	
-	@RequestMapping("/games/{id}")
+	@RequestMapping("/hello/{id}")
 	public Optional<Games> getGame(@PathVariable int id) {
 		log.info("(Controller)Getting game by specific id '" + id + "' :- "+ gameService.getGame(id));
 		return gameService.getGame(id);

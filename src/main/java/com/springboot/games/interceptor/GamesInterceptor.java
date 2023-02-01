@@ -77,7 +77,20 @@ public class GamesInterceptor implements HandlerInterceptor {
              password = decryptCode(auth);
             log.info("password - " + password);
         }
-        if(!password.equals("Authorization123@"))
+        String[] arr = password.split("~");
+        Date myDate = new Date();
+        long myDateTime = myDate.getTime();
+        log.info("myDate - " + myDate + " myDateTime -" + myDateTime);
+        Date authDate = new Date(Long.parseLong(arr[0]));
+        long authDateTime = authDate.getTime();
+        log.info("authDate - " + authDate + " authDateTime -" + authDateTime);
+        long diff = myDateTime-authDateTime;
+        log.info("DIff - " + diff);
+        if(diff>10*1000) {
+        	log.info("TIme diff is great");
+        	return false;
+        }
+        if(!arr[1].equals("Authorization123@"))
         	return false;
         
         

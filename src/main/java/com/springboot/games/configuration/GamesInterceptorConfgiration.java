@@ -16,7 +16,7 @@ public class GamesInterceptorConfgiration extends WebMvcConfigurationSupport {
 	@Override
 	protected void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub
-		registry.addInterceptor(gamesInterceptor);
+		registry.addInterceptor(gamesInterceptor).addPathPatterns("/games");
 	}
 	
 	
